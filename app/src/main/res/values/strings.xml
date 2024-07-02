@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EmployeeApp</string>
+    <string name="employee">社員情報管理システム</string>
 </resources>
