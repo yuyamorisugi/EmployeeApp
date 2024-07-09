@@ -1,4 +1,33 @@
 <resources>
-    <string name="app_name">EmployeeApp</string>
-    <string name="employee">社員情報管理システム</string>
+    <!--    nameセクション-->
+    <string name="app_name">社員管理App</string>
+    <string name="employee_list">社員一覧</string>
+    <string name="employee_register">社員登録</string>
+    <string name="employee_id">社員ID</string>
+    <string name="employee_name">社員名</string>
+    <string name="employee_sec">所属セクション</string>
+    <string name="employee_email">メールアドレス</string>
+    <string name="employee_gender">性別</string>
+    <string name="employee_boy">男性</string>
+    <string name="employee_girl">女性</string>
+    <string name="must_item">必須項目</string>
+    <string name="hint_firstname">姓</string>
+    <string name="hint_lastname">名</string>
+
+    <!--    ヒントセクション-->
+    <string name="hint_id">例）YZ12345678</string>
+    <string name="hint_email">例）taro_yaz@yaz.co.jp</string>
+
+
+    <!--    ボタンセクション-->
+    <string name="submit_btn">登録</string>
+    <string name="back_btn">＜ 戻る</string>
+
+    <!--    spinerセクション-->
+    <string-array name="spinner_items">
+        <!-- 他のアイテムを必要に応じて追加 -->
+        <item>シス開</item>
+        <item>ビジソル</item>
+        <item>グロカル</item>
+    </string-array>
 </resources>
