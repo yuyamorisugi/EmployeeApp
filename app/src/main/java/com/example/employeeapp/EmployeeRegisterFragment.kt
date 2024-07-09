@@ -20,7 +20,7 @@ class EmployeeRegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // 戻るボタンの処理を追加する
-        val backButton = view.findViewById<Button>(R.id.button)
+        val backButton = view.findViewById<Button>(R.id.backbtn)
         backButton.setOnClickListener {
             // EmployeeListFragmentに遷移する
             val fragment = EmployeeListFragment()
