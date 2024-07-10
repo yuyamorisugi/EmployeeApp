@@ -1,10 +1,16 @@
 package com.example.employeeapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 class EmployeeRegisterFragment : Fragment() {
@@ -19,6 +25,15 @@ class EmployeeRegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val submitButton = view.findViewById<Button>(R.id.submitbtn)
+        submitButton.setOnClickListener {
+            if (validateInputs()) {
+                // バリデーションが通過した場合の処理
+                Toast.makeText(context, "登録成功", Toast.LENGTH_SHORT).show()
+                // ここに登録処理を追加
+            }
+        }
+
         // 戻るボタンの処理を追加する
         val backButton = view.findViewById<Button>(R.id.backbtn)
         backButton.setOnClickListener {
@@ -28,5 +43,57 @@ class EmployeeRegisterFragment : Fragment() {
                 .replace(R.id.fragment_container, fragment)
                 .commit()
         }
+    }
+        private val existingIds = mutableListOf<String>()
+        private val existingEmails = mutableListOf<String>()
+        private val existingFirstNames = mutableListOf<String>()
+        private val existingLastNames = mutableListOf<String>()
+        private val existingSections = mutableListOf<String>()
+        private val existingGenders = mutableListOf<String>()
+    private fun validateInputs(): Boolean {
+        val id = view?.findViewById<EditText>(R.id.IDholder)?.text.toString()
+        val firstName = view?.findViewById<EditText>(R.id.firstName)?.text.toString()
+        val lastName = view?.findViewById<EditText>(R.id.secondName)?.text.toString()
+        val section = view?.findViewById<Spinner>(R.id.sectionItem)?.selectedItem.toString()
+        val email = view?.findViewById<EditText>(R.id.editTextText)?.text.toString()
+        val genderId = view?.findViewById<RadioGroup>(R.id.radioGroup)?.checkedRadioButtonId
+        val gender = genderId?.let { view?.findViewById<RadioButton>(it)?.text.toString() } ?: ""
+
+
+        when {
+            id.isEmpty() -> showToast("社員IDを入力してください")
+            firstName.isEmpty() -> showToast("社員名（姓）を入力してください")
+            lastName.isEmpty() -> showToast("社員名（名）を入力してください")
+            section.isEmpty() -> showToast("所属セクションを入力してください")
+            email.isEmpty() -> showToast("メールアドレスを入力してください")
+            gender.isEmpty() -> showToast("性別を入力してください")
+            id.length != 10 -> showToast("社員IDは10桁で入力してください")
+            firstName.length > 25 -> showToast("社員名（姓）は25文字以内で入力してください")
+            lastName.length > 25 -> showToast("社員名（名）は25文字以内で入力してください")
+            email.length > 256 -> showToast("メールアドレスは256文字以内で入力してください")
+            !Regex("^YZ\\d{8}$").matches(id) -> showToast("社員IDはYZを含む8桁の数字で入力してください")
+            !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> showToast("有効なメールアドレスを入力してください")
+            !listOf("1", "2", "3").contains(section) -> showToast("所属セクションは1, 2, 3のいずれかで入力してください")
+            !listOf("1", "2").contains(gender) -> showToast("性別は1または2のいずれかで入力してください")
+            existingFirstNames.contains(firstName) -> showToast("社員名（姓）は重複しています")
+            existingLastNames.contains(lastName) -> showToast("社員名（名）は重複しています")
+            existingSections.contains(section) -> showToast("所属セクションは重複しています")
+            existingGenders.contains(gender) -> showToast("性別は重複しています")
+            else -> {
+                // 新しいデータをリストに追加
+                existingIds.add(id)
+                existingEmails.add(email)
+                existingFirstNames.add(firstName)
+                existingLastNames.add(lastName)
+                existingSections.add(section)
+                existingGenders.add(gender)
+                return true
+            }
+        }
+        return false
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }
