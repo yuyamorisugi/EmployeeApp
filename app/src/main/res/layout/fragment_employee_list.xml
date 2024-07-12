@@ -13,7 +13,7 @@
 
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/employeeId4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -30,7 +30,7 @@
             android:layout_marginTop="24dp"
             android:text="@string/employee_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+            app:layout_constraintTop_toBottomOf="@+id/employeeName3" />
 
         <TextView
             android:id="@+id/textView19"
@@ -39,11 +39,11 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
             android:text="@string/employee_id"
-            app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+            app:layout_constraintStart_toEndOf="@+id/employeeName3"
+            app:layout_constraintTop_toBottomOf="@+id/employeeId2" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/employeeName3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -53,14 +53,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/employeeId2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
             android:text="@string/employee_id"
             app:layout_constraintStart_toEndOf="@+id/textView16"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            app:layout_constraintTop_toBottomOf="@+id/employeeId1" />
 
         <TextView
             android:id="@+id/textView16"
@@ -70,7 +70,7 @@
             android:layout_marginTop="24dp"
             android:text="@string/employee_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/employeeName1" />
 
         <include
             android:id="@+id/toolbar"
@@ -80,7 +80,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/employeeName1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -90,13 +90,13 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/employeeId1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="24dp"
             android:text="@string/employee_id"
-            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintStart_toEndOf="@+id/employeeName1"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -108,11 +108,11 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="24dp"
         android:text="@string/employee_id"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/employeeName2"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/employeeName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"

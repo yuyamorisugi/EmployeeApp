@@ -10,12 +10,12 @@
     android:paddingRight="0dp">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/backbtn"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#009688"
         android:text="@string/back_btn"
-        android:textSize="40px" />
+        android:textSize="30px" />
 
     <TextView
         android:id="@+id/toolbar_title"
