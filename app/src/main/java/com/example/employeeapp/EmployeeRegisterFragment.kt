@@ -50,6 +50,9 @@ class EmployeeRegisterFragment : Fragment() {
         private val existingLastNames = mutableListOf<String>()
         private val existingSections = mutableListOf<String>()
         private val existingGenders = mutableListOf<String>()
+    /**
+     * バリデーションチェックする
+     */
     private fun validateInputs(): Boolean {
         val id = view?.findViewById<EditText>(R.id.IDholder)?.text.toString()
         val firstName = view?.findViewById<EditText>(R.id.firstName)?.text.toString()
@@ -59,12 +62,14 @@ class EmployeeRegisterFragment : Fragment() {
         val genderId = view?.findViewById<RadioGroup>(R.id.radioGroup)?.checkedRadioButtonId
         val gender = genderId?.let { view?.findViewById<RadioButton>(it)?.text.toString() } ?: ""
 
+        val validSections = listOf("シス開", "ビジソル", "グロカル")
+
 
         when {
             id.isEmpty() -> showToast("社員IDを入力してください")
             firstName.isEmpty() -> showToast("社員名（姓）を入力してください")
             lastName.isEmpty() -> showToast("社員名（名）を入力してください")
-            section.isEmpty() -> showToast("所属セクションを入力してください")
+            section == "選択してください" -> showToast("所属セクションを正しく選択してください")
             email.isEmpty() -> showToast("メールアドレスを入力してください")
             gender.isEmpty() -> showToast("性別を入力してください")
             id.length != 10 -> showToast("社員IDは10桁で入力してください")
@@ -72,9 +77,9 @@ class EmployeeRegisterFragment : Fragment() {
             lastName.length > 25 -> showToast("社員名（名）は25文字以内で入力してください")
             email.length > 256 -> showToast("メールアドレスは256文字以内で入力してください")
             !Regex("^YZ\\d{8}$").matches(id) -> showToast("社員IDはYZを含む8桁の数字で入力してください")
-            !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> showToast("有効なメールアドレスを入力してください")
-            !listOf("1", "2", "3").contains(section) -> showToast("所属セクションは1, 2, 3のいずれかで入力してください")
-            !listOf("1", "2").contains(gender) -> showToast("性別は1または2のいずれかで入力してください")
+            !isValidEmail(email) -> showToast("メールアドレスを正しく入力してください")
+            section !in validSections -> showToast("所属セクションを正しく選択してください")
+            !listOf("1", "2").contains(gender) -> showToast("性別を正しく入力してください")
             existingFirstNames.contains(firstName) -> showToast("社員名（姓）は重複しています")
             existingLastNames.contains(lastName) -> showToast("社員名（名）は重複しています")
             existingSections.contains(section) -> showToast("所属セクションは重複しています")
@@ -92,7 +97,10 @@ class EmployeeRegisterFragment : Fragment() {
         }
         return false
     }
-
+    private fun isValidEmail(email: String): Boolean {
+        val emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"
+        return Regex(emailPattern).matches(email)
+    }
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }

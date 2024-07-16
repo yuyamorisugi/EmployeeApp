@@ -26,6 +26,7 @@
     <!--    spinerセクション-->
     <string-array name="spinner_items">
         <!-- 他のアイテムを必要に応じて追加 -->
+        <item>選択してください</item>
         <item>シス開</item>
         <item>ビジソル</item>
         <item>グロカル</item>
