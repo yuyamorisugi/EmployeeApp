@@ -60,8 +60,11 @@ class EmployeeRegisterFragment : Fragment() {
         val section = view?.findViewById<Spinner>(R.id.sectionItem)?.selectedItem.toString()
         val email = view?.findViewById<EditText>(R.id.editTextText)?.text.toString()
         val genderId = view?.findViewById<RadioGroup>(R.id.radioGroup)?.checkedRadioButtonId
-        val gender = genderId?.let { view?.findViewById<RadioButton>(it)?.text.toString() } ?: ""
-
+        val gender = when (genderId) {
+            R.id.mensItem -> "男性"
+            R.id.girlItem -> "女性"
+            else -> ""
+        }
         val validSections = listOf("シス開", "ビジソル", "グロカル")
 
 
@@ -79,7 +82,7 @@ class EmployeeRegisterFragment : Fragment() {
             !Regex("^YZ\\d{8}$").matches(id) -> showToast("社員IDはYZを含む8桁の数字で入力してください")
             !isValidEmail(email) -> showToast("メールアドレスを正しく入力してください")
             section !in validSections -> showToast("所属セクションを正しく選択してください")
-            !listOf("1", "2").contains(gender) -> showToast("性別を正しく入力してください")
+            !listOf("男性", "女性").contains(gender) -> showToast("性別を正しく入力してください")
             existingFirstNames.contains(firstName) -> showToast("社員名（姓）は重複しています")
             existingLastNames.contains(lastName) -> showToast("社員名（名）は重複しています")
             existingSections.contains(section) -> showToast("所属セクションは重複しています")
