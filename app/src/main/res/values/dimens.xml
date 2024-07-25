@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="item_spacing">2dp</dimen> <!-- アイテム間の隙間を8dpに設定 -->
+</resources>
+
