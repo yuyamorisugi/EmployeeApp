@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EmployeeApp"
         tools:targetApi="31">
+        <activity android:name=".EmployeeDetailActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

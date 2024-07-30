@@ -10,4 +10,7 @@ class EmployeeRepository (private val employeeDao: EmployeeDao){
     suspend fun insert(employee: Employee) {
         employeeDao.insert(employee)
     }
+    suspend fun getEmployeeById(employeeId: String): Employee? {
+        return employeeDao.getEmployeeById(employeeId)
+    }
 }
