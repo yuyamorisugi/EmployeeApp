@@ -36,15 +36,6 @@ class EmployeeListFragment : Fragment() {
         val spacingInPixels = resources.getDimensionPixelSize(R.dimen.item_spacing)  // res/values/dimens.xml で定義した値を取得
         recyclerView.addItemDecoration(CustomItemDecoration(spacingInPixels))
 
-//        // 初期データの追加（テスト用）
-//        employeeViewModel.insert(Employee(
-//            idholder = "123",
-//            firstName = "John",
-//            secondName = "Doe",
-//            sectionItem = 1,
-//            editTextText = "john.doe@example.com",
-//            radioGroup = 1
-//        ))
 
 // ViewModel からデータを取得して RecyclerView に表示
         employeeViewModel.getAllEmployees { employees ->
