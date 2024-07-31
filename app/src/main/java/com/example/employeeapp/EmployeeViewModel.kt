@@ -21,7 +21,14 @@ class EmployeeViewModel (application: Application) : AndroidViewModel(applicatio
             }
         }
     }
-
+    fun getEmployeeById(employeeId: String, callback: (Employee?) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val employee = repository.getEmployeeById(employeeId)
+            withContext(Dispatchers.Main) {
+                callback(employee)
+            }
+        }
+    }
     fun insert(employee: Employee) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(employee)
     }

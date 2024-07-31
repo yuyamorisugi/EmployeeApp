@@ -3,6 +3,7 @@
     <string name="app_name">社員管理App</string>
     <string name="employee_list">社員一覧</string>
     <string name="employee_register">社員登録</string>
+    <string name="employee_detail">社員参照</string>
     <string name="employee_id">社員ID</string>
     <string name="employee_name">社員名</string>
     <string name="employee_sec">所属セクション</string>
