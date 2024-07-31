@@ -20,8 +20,8 @@ abstract class EmployeeDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     EmployeeDatabase::class.java,
-                    "company_directory"
-                ).build()
+                    "employee-database"
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 instance
             }
